@@ -36,6 +36,7 @@ gem 'jquery-rails'
 
 # To use debugger
 #gem 'debugger'
+gem 'pry'
 
 group :development do
   gem 'annotate'

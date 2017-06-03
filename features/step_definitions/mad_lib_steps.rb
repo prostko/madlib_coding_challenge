@@ -4,7 +4,10 @@ end
 
 Then /^it should have the following fields:$/ do |table|
   table.hashes.each do |field|
-    @madlib.has_field?(field[:label]).should be_true
+    # changed `be_true` to `be true`
+    # getting `exected true to respond to true? error`
+    # reported here: https://stackoverflow.com/questions/24081843/expected-true-to-respond-to-true
+    @madlib.has_field?(field[:label]).should be true
   end
 end
 
@@ -78,4 +81,3 @@ Given /^I input all these madlibs again$/ do
   fill_in "Verb, ending in -ing (1):", :with => "dancing"
   click_button("Fill In")
 end
-

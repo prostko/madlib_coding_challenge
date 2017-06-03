@@ -23,7 +23,11 @@ class Solution < ActiveRecord::Base
   def resolve
     framework = self.MadLib.framework.dup
     @fields.each do |label, value|
-      framework.sub!(label, value[:with])
+      if value.class == Hash
+        framework.sub!(label, value[:with])
+      else
+        framework.sub!(label, value)
+      end
     end
     framework
   end

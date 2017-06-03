@@ -1,0 +1,23 @@
+<h1><%= @greeting %></h1>
+<h1>MAKE A NEW MADLID!</h1>
+
+
+
+<%= form_tag ({controller: "mad_libs", action: "create"}) do %>
+  <%= text_area_tag(:madlib_title, nil, placeholder: "Title goes here", size: "50x2") %>
+  <br>
+  <%= text_area_tag(:madlib_text, nil, placeholder: "Put your { adjective } Mad-lid here!", size: "80x10") %>
+  <br>
+  <%= submit_tag("Submit New Mad-Lid") %>
+<% end %>
+
+
+
+<% if @errors  %>
+<ul>
+  <% @errors.each do |error| %>
+    <li><p><%= error %></p></li>
+  <% end %>
+</ul>
+
+<% end %>

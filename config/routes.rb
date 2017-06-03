@@ -1,4 +1,12 @@
 Madlibs::Application.routes.draw do
+
+  resources :mad_libs, only: [:new, :create] do
+    resources :solutions, only: [:show, :create, :new]
+  end
+
+  get '/home' => 'mad_libs#home'
+
+  root to: 'mad_libs#home'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

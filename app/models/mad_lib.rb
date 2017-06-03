@@ -5,6 +5,13 @@ class MadLib < ActiveRecord::Base
 
   has_many :solutions
   validates :text, presence: true
+  validate :valid_text
+
+  def valid_text
+    unless self.text && self.text.match(/({.+?})/)
+      errors.add(:text, "must contain places for input, ex. 'The { noun } is { verb, ending in -ing } on the { noun }.'")
+    end
+  end
 
   after_initialize do |this|
     this.transpile_text_to_fields
@@ -28,7 +35,7 @@ class MadLib < ActiveRecord::Base
 
   def create_framework(labels)
     @framework = self.text.dup
-    whole_matches = @framework.scan(/({.*?})/)
+    whole_matches = whole_match(@framework)
     whole_matches.each_with_index do |word, index|
         @framework.sub!(/#{word[0]}/, "#{labels[index]}")
     end
@@ -38,6 +45,10 @@ class MadLib < ActiveRecord::Base
   private
   def match_pattern(string)
     string.scan(/{(.*?)}/).flatten
+  end
+
+  def whole_match(string)
+    string.scan(/({.+?})/)
   end
 
 end

@@ -15,12 +15,12 @@ Feature: Manage mad_libs
 
   Bonus points will be awarded for:
     * Passing more than the model-level Scenarios (remove the @wip tags)
-    * Finding and using the helper tools we've included in this 
+    * Finding and using the helper tools we've included in this
       application stub.
-    * Deploying the resultant app on heroku or (for more points) 
+    * Deploying the resultant app on heroku or (for more points)
       Amazon's EC2.
     * Making it look pretty
-    * Making use of ajax (you may need to annotate these Scenarios with 
+    * Making use of ajax (you may need to annotate these Scenarios with
       the @javascript tag to make the features pass)
     * Anything else awesome above and beyond passing the tests
 
@@ -29,6 +29,7 @@ Feature: Manage mad_libs
   necessarily be answered ;) Just email josh@optoro.com
 
   Good luck!
+
 
   Scenario: Create a madlib model
     When I create a madlib with the text:
@@ -96,7 +97,6 @@ Feature: Manage mad_libs
   ### STOP Here unless you want bonus points! ###
   ###############################################
 
-  @wip
   Scenario: Create a madlib via web
     Given I am on the home page
     When I fill in the text:

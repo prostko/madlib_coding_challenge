@@ -1,0 +1,13 @@
+<% @madlib.title ? title = @madlib.title : title = "MadLid #{@madlib.id}"%>
+<h1><%= title %></h1>
+
+<h1>New Mad Lib created</h1>
+
+<%= form_tag ({controller: 'solutions', action: 'create'}) do %>
+  <% @madlib.field_labels.each do |label| %>
+    <%= label_tag label %>
+    <%= text_field_tag "field_labels[#{label}]", nil, id: label%>
+    <br>
+  <% end %>
+  <%= submit_tag "Fill In" %>
+<% end %>

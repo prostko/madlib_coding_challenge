@@ -61,3 +61,10 @@
 .demo-footer .mdl-mini-footer--link-list a {
   font-size: 13px;
 }
+
+.link_div {
+  float: left;
+  width: 100px;
+  height:auto;
+  margin: 1em;
+}

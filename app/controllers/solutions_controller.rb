@@ -1,7 +1,15 @@
 class SolutionsController < ApplicationController
   def show
+    @madlib = MadLib.find_by_id(params[:mad_lib_id])
     @solution = Solution.find_by_id(params[:id])
     @resolution = @solution.resolve
+
+    respond_to do |format|
+      format.html
+      format.json{
+        render json: @solution.to_json
+      }
+    end
   end
 
   def create
@@ -12,8 +20,9 @@ class SolutionsController < ApplicationController
       params[:field_labels].each do |label, value|
         @solution.fill_field(label, value)
       end
-        redirect_to mad_lib_solution_path(@madlib, @solution)
+      redirect_to mad_lib_solution_path(@madlib, @solution)
     else
+      redirect_to '/'
     end
   end
 

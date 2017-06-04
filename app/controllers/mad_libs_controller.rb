@@ -16,4 +16,14 @@ class MadLibsController < ApplicationController
       render 'new'
     end
   end
+
+  def show
+    @madlib = MadLib.find_by_id(params[:id])
+    
+    respond_to do |format|
+      format.json{
+        render json: @madlib.to_json
+      }
+    end
+  end
 end

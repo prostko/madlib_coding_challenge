@@ -1,6 +1,6 @@
 Madlibs::Application.routes.draw do
 
-  resources :mad_libs, only: [:new, :create] do
+  resources :mad_libs, only: [:show, :new, :create] do
     resources :solutions, only: [:show, :create, :new]
   end
 

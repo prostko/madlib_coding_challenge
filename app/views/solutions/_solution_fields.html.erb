@@ -1,0 +1,9 @@
+<%= form_tag mad_lib_solutions_path(madlib, solution), id: 'fill_in_madlib_solution_form' do %>
+  <% madlib.field_labels.each do |label| %>
+    <%= label_tag label %>
+    <%= text_field_tag "field_labels[#{label}]", nil, id: label%>
+    <%= text_area_tag(:madlib_text, nil, id: "no-display", size: "100x1") %>
+    <br>
+    <% end %>
+  <%= submit_tag "Fill In" %>
+<% end %>

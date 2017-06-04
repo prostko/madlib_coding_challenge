@@ -1,0 +1,18 @@
+<h1>Mad Lib Reports</h1>
+
+
+<ul>
+  <% @answers_report.each do |field, answers| %>
+  <h5> <%= field %> </h5>
+    <% answers.each do |answer| %>
+      <p><%= answer.to_s %></p>
+    <% end %>
+  <% end %>
+</ul>
+
+<ul>
+  <% @fields_report.each do |field| %>
+    <h5> <%= field.to_s %> </h5>
+
+  <% end %>
+</ul>

@@ -9,17 +9,31 @@ class MadLibsController < ApplicationController
 
   def create
     @madlib = MadLib.new(title: params['madlib_title'], text: params['madlib_text'])
+
+    respond_to do |format|
+      format.js {}
+      format.html {}
+    end
+    
     if @madlib.save
-      redirect_to new_mad_lib_solution_path(@madlib)
+      if request.xhr?
+        render 'solutions/new', layout: false, :content_type => 'text/html'
+      else
+        redirect_to new_mad_lib_solution_path(@madlib)
+      end
     else
       @errors = @madlib.errors.full_messages
-      render 'new'
+      if request.xhr?
+        render :json =>  @errors.to_json
+      else
+        render 'new'
+      end
     end
   end
 
   def show
     @madlib = MadLib.find_by_id(params[:id])
-    
+
     respond_to do |format|
       format.json{
         render json: @madlib.to_json

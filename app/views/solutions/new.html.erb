@@ -1,28 +1,12 @@
 
+  <div class="demo-crumbs mdl-color-text--grey-500" >
+    <h3 class="resolved_madlib">New Mad Lib created</h3>
+  </div>
 
-<div class="demo-layout mdl-layout mdl-layout--fixed-header mdl-js-layout mdl-color--grey-100">
-  <div class="demo-ribbon"></div>
-  <main class="demo-main mdl-layout__content">
-    <div class="demo-container mdl-grid">
-      <div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
-      <div class="demo-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col">
-        <div class="demo-crumbs mdl-color-text--grey-500">
-          <% @madlib.title ? title = @madlib.title : title = "MadLid #{@madlib.id}"%>
-          <h5>New Mad Lib created</h5>
-        </div>
-        <h2><%= title %></h2>
+  <% @madlib.title ? title = @madlib.title : title = "MadLid #{@madlib.id}"%>
+  <h2><%= title %></h2>
 
-        <p>(Fill in the fields below according to their labels)</p>
-        <%= form_tag ({controller: 'solutions', action: 'create'}) do %>
-          <% @madlib.field_labels.each do |label| %>
-            <%= label_tag label %>
-            <%= text_field_tag "field_labels[#{label}]", nil, id: label%>
-            <br>
-          <% end %>
-          <%= submit_tag "Fill In" %>
-        <% end %>
+  <p>(Fill in the fields below according to their labels)</p>
 
-      </div>
-    </div>
-  </main>
-</div>
+
+<%= render :partial => 'solutions/solution_fields', :locals => {:madlib => @madlib, :solution => @solution} %>

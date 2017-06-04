@@ -5,6 +5,7 @@ Madlibs::Application.routes.draw do
   end
 
   get '/home' => 'mad_libs#home'
+  get 'reports' => 'solutions#report'
 
   root to: 'mad_libs#home'
   # The priority is based upon order of creation:

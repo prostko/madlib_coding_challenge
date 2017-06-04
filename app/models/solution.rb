@@ -31,4 +31,35 @@ class Solution < ActiveRecord::Base
     end
     framework
   end
+
+  def self.report_fields
+    field_count = []
+    field_report = Hash.new(0)
+    fields_array = self.all.reduce([]) {|array, solution| array + solution.MadLib.fields}
+    fields_array.map!{|field| field.split(' ')[0].gsub(/[^0-9a-z]/i, '')}
+    fields_array.each{ |field| field_report[field] += 1}
+    field_report.each{|field, count| field_count << "#{field.capitalize}s: #{count}" }
+    field_count
+  end
+
+  def self.report_answers
+    answer_report = Hash.new{ |h, k| h[k] = [] }
+    field_answer_count = Hash.new
+
+    answers_array = self.all.each do |solution|
+      solution.fields.each do |field, answer|
+        answer_report[field[0..-5].strip]  << answer
+      end
+    end
+
+    answer_report.each do |field_name, array_of_answers|
+      answer_hash_count = Hash.new(0)
+      answer_count = []
+
+      array_of_answers.each{|answer| answer_hash_count[answer] += 1 }
+      answer_hash_count.each{|answer, count| answer_count << "#{answer}: #{count}"}
+      field_answer_count[field_name] = answer_count
+    end
+    field_answer_count
+  end
 end

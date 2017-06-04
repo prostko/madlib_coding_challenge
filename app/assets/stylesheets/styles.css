@@ -68,3 +68,7 @@
   height:auto;
   margin: 1em;
 }
+
+#no-display {
+  opacity:0;
+}

@@ -42,7 +42,10 @@ class MadLib < ActiveRecord::Base
     @framework
   end
 
-  private
+  def fields
+    self.match_pattern(self.text)
+  end
+
   def match_pattern(string)
     string.scan(/{(.*?)}/).flatten
   end

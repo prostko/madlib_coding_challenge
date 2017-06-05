@@ -4,6 +4,8 @@ gem 'rails', '3.2.22'
 
 gem 'sqlite3'
 gem 'haml'
+gem 'pg', group: :production
+gem 'rails_12factor', group: :production
 
 # Gems used only for assets and not required
 # in production environments by default.

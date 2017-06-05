@@ -1,25 +1,29 @@
-# Welcome!
+# Interview Application for 0pt0r0
 
-Please see the problem description and summary in `features/manage_mad_libs.feature`
+A project completed for the interview process for 0pt0r0. A website where users and guests can write new Mad-Libs templates and play other peoples' templates. Using Rails 3, PostgreSQL, Material Design Lite, Cucumber and Capybara for testing.
 
-# Getting Started
+Visit the live example [Here](https://fathomless-anchorage-64295.herokuapp.com/home)
 
-To get started with this rails app, you'll want to ensure you have the
-correct version of ruby. You should be using MRI 1.9.3. We recommend
-using [RVM][1], but use whatever method works best for you. This project
-has a `.rvmrc` file included in it to help you get started.
+Please see the problem description and summary in features/manage_mad_libs.feature
 
-After you have the proper version of ruby, you will need bundler (`gem
-install bundler`), then you can run `bundle install` and get to work.
+#Installation
 
-# Running the tests
+Clone the repository
+`bundle install`
+run `rails s` and navigate to localhost:3000/ in your browser!
 
-You should be able to just run `cucumber` from the console and see the
-tests run (and fail to start). Sometimes you might have to run `bundle
-exec cucumber` depending on your particular environment.
+#Tests
 
-# Goal
+Testing is done with Cucumber and Capybara,
+just run `cucumber`
 
-Make the tests pass. Good luck! :)
+#Future Goals
 
-[1]: http://rvm.io
+- Extend the functionality of User profiles, ratings and ranking for Users and Mad-libs.
+- Improve appearance of site overall.
+- Add ability to fill in random words into Mad-lib fields.
+- Extend testing.
+
+#License
+
+MIT

@@ -1,7 +1,9 @@
 class Solution < ActiveRecord::Base
-  attr_accessible :solution_hash
+  attr_accessible :solution_hash, :user_id
   attr_reader :fields
+
   belongs_to :MadLib, class_name: "MadLib", foreign_key: "mad_lib_id"
+  belongs_to :user
 
   validates :mad_lib_id, presence: true
 

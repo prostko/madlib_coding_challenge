@@ -1,11 +1,14 @@
 Madlibs::Application.routes.draw do
 
+  devise_for :users
+
   resources :mad_libs, only: [:show, :new, :create] do
     resources :solutions, only: [:show, :create, :new]
   end
 
   get '/home' => 'mad_libs#home'
-  get 'reports' => 'solutions#report'
+  get '/reports' => 'solutions#report'
+  get '/users/profile/:id' => 'users#show'
 
   root to: 'mad_libs#home'
   # The priority is based upon order of creation:

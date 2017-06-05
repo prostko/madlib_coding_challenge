@@ -1,0 +1,22 @@
+<h3>Your Madlibs:</h3>
+<ul>
+  <% if @user.madlibs.present? %>
+    <% @user.madlibs.each do |madlib| %>
+
+      <li><h5> <%= madlib.title %>: </h5><p><%= madlib.text %></p></li>
+    <% end %>
+  <% else%>
+    <p>Go write some madlibs!</p>
+  <% end %>
+</ul>
+
+<h3>Your solutions!</h3>
+<ul>
+  <% if @user.madlibs.present? %>
+    <% @user.solutions.each do |solution| %>
+      <li><%= solution.resolve %></li>
+    <% end %>
+  <% else%>
+    <p>Go play some madlibs!</p>
+  <% end %>
+</ul>

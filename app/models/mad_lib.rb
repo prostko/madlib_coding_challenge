@@ -1,9 +1,10 @@
 class MadLib < ActiveRecord::Base
   # attr_accessible :title, :body
-  attr_accessible :title, :text
+  attr_accessible :title, :text, :user_id
   attr_reader :field_labels, :framework
 
   has_many :solutions
+  belongs_to :user
   validates :text, presence: true
   validate :valid_text
 
@@ -53,5 +54,4 @@ class MadLib < ActiveRecord::Base
   def whole_match(string)
     string.scan(/({.+?})/)
   end
-
 end

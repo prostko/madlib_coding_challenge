@@ -7,8 +7,10 @@ class SolutionsController < ApplicationController
 
   def create
     @madlib = MadLib.find_by_id(params[:mad_lib_id])
-    @solution = @madlib.solutions.create
-
+    @solution = @madlib.solutions.new
+    @solution.update_attributes(user_id: current_user.id) if current_user
+    @solution.save
+    
     respond_to do |format|
       format.js {}
       format.html { }

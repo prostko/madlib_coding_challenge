@@ -9,7 +9,7 @@
     <%= form_tag mad_libs_path(@madlib), id: 'new_madlib_form' do %>
     <%= text_area_tag(:madlib_title, nil, placeholder: "Title goes here", size: "50x2") %>
     <br>
-    <%= text_area_tag(:madlib_text, nil, placeholder: "Put your { adjective } Mad-lid here in this { noun }!", id: "mad_lib_text", size: "80x10") %>
+    <%= text_area_tag(:madlib_text, nil, placeholder: "Put your { adjective } Mad-lib here in this { noun }!", id: "mad_lib_text", size: "80x10") %>
     <br>
     <%= submit_tag("Create", id: 'Create') %>
     <% end %>
